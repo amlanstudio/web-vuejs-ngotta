@@ -1,5 +1,5 @@
 <template>
-  <!-- <img alt="Vue logo" src="./assets/logo.png"> -->
+  <!-- <img alt="Vue logo" src="assets/logo.png"> -->
   <FruitHeader/>
   <FruitGallery/>
 </template>
@@ -7,6 +7,7 @@
 <script>
 import FruitHeader from './components/FruitHeader.vue'
 import FruitGallery from './components/FruitGallery.vue'
+
 
 
 export default {

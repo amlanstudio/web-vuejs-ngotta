@@ -1,9 +1,9 @@
 <template>
-    <div class="oui">
+    <div class="banniere">
         <i-header id="cover-header" cover class="_text-align:center _color:white">
             <h1>BIENVENUE CHEZ LES FRUITZS</h1>
             <p>L'application qui a la 🍑 et qui va te donner la 🍌 ! </p>
-            <i-button color="primary">RAMÈNE TA FRAISE ! 🍓</i-button>
+            <a href="./components/FruitGallery#presentation"><i-button color="primary">RAMÈNE TA FRAISE ! 🍓</i-button></a>
         </i-header>
     </div>
 </template>
@@ -17,10 +17,12 @@ export default {
 <style>
 
 #cover-header {
-  background-image: url("../assets/banfruit2.jpg");
+  background-image: url("../assets/image/banfruit2.jpg");
   background-size:cover;
   background-position: bottom;
-  height:820px;
+  height:100vh;
+  background-color: #fefaef;
+
 }
 
 #cover-header h1 {
@@ -36,9 +38,9 @@ export default {
     background-color: #FFBD53;
     border : none;
     color:#000000;
-    margin-top: 3%;
+    margin-top: 5%;
     font-weight: bold;
-    border-radius: 10%;
+    border-radius: 0%;
     padding : 1% 2% 1% 2%;
 }
 
