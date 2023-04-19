@@ -1,5 +1,5 @@
 <template>
-   <i-card class="fruit-card">
+   <i-card class="fruit-card" v-show="categoriesSelected.includes(fruitCategory)" > 
     <div class="fruit-image">
         <img v-bind:src="urlFruitPicture"/>
     </div>
@@ -7,10 +7,9 @@
 
     <div class="details">
        <p class="family">
-            <!-- ici link le nom de la famille du fruit -->
             <strong>Catégorie : </strong>{{ fruitCategory }}
        </p>
-
+<!-- si cat selected est vide, tu affiches tout le monde -->
     </div>   
 </i-card>
 </template>
@@ -24,7 +23,7 @@ export default {
     props:{
         product_url:{type :Int16Array},
         fruit:{type :String},
-        // pictureUrl:{type:String, default: require("../assets/image/oops.png")}
+        categoriesSelected:{type:Array},
     },data(){
         return{
         fruitDatas:[],
@@ -46,12 +45,12 @@ export default {
                 this.urlFruitPicture="https://api.predic8.de"+fruitDatas.photo_url;
             }
             else{
-            //     try{
-            //     require("https://api.predic8.de"+fruitDatas.photo_url);
-            // }catch(error){
-            //     this.urlFruitPicture= require("../assets/image/oops.png");
-            //     return;
-            // }
+                try{
+                require("https://api.predic8.de"+fruitDatas.photo_url);
+            }catch(error){
+                this.urlFruitPicture= require("../assets/image/oops.png");
+                return;
+            }
             this.urlFruitPicture= "https://api.predic8.de"+fruitDatas.photo_url;
             }
           

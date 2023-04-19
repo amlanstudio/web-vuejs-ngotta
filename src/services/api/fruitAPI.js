@@ -33,3 +33,5 @@ const getFruitCategory = async function(cat_url){
 
 export {getFruitDataName,getFruitAllDatas, getFruitCategory};
 
+
+// faire un tab en donne calc
