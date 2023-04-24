@@ -3,10 +3,10 @@
         <div class="typeFruitsTri">
             <h3>Dans ma salade de fruit il y a ...</h3>
             <div class="choiceButton">
-                <i-button v-on:click="toggleCards(['Fresh','Fruits'])">Fruits frais</i-button>
-                <i-button v-on:click="toggleCards(['Exotic'])">Fruits exotiques</i-button>
-                <i-button v-on:click="toggleCards(['Dried'])">Fruits secs</i-button>
-                <i-button v-on:click="toggleCards(['Nuts'])">Noix</i-button>
+                <i-button class="sleep-state" v-on:click="toggleCards(['Fresh','Fruits'])">Fruits frais</i-button>
+                <i-button class="sleep-state" v-on:click="toggleCards(['Exotic'])">Fruits exotiques</i-button>
+                <i-button class="sleep-state" v-on:click="toggleCards(['Dried'])">Fruits secs</i-button>
+                <i-button class="sleep-state" v-on:click="toggleCards(['Nuts'])">Noix</i-button>
             </div>
             </div>
         <div class="classicalTri">
@@ -74,6 +74,8 @@ export default {
                     }else{
                     //si category est pas dans cat selected tu mets dans cat selected
                         this.categoriesSelected.push(i);
+                        console.log("cette fonction marche biiis");
+
                     }
             }
         }
@@ -82,6 +84,7 @@ export default {
         }
         
     }
+
 </script>
 <style>
 html{
@@ -125,6 +128,11 @@ html{
 
 .choiceButton .button:hover{
     background-color: #FFBD53;
+}
+
+.choiceButton .button:active{
+    background-color: red;
+    color:green;
 }
 
 .choiceButton{

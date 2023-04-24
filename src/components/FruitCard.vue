@@ -1,5 +1,5 @@
 <template>
-   <i-card class="fruit-card" v-show="categoriesSelected.includes(fruitCategory)" > 
+   <i-card class="fruit-card" v-show="categoriesSelected.length === 0 || categoriesSelected.includes(fruitCategory)">
     <div class="fruit-image">
         <img v-bind:src="urlFruitPicture"/>
     </div>
