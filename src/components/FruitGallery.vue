@@ -1,12 +1,12 @@
 <template>
     <div class="fruits-gallery">
-        <div class="typeFruitsTri">
+        <div class="typeFruitsTri" ref="fruitSalad">
             <h3>Dans ma salade de fruit il y a ...</h3>
             <div class="choiceButton">
-                <i-button class="sleep-state" v-on:click="toggleCards(['Fresh','Fruits'])">Fruits frais</i-button>
-                <i-button class="sleep-state" v-on:click="toggleCards(['Exotic'])">Fruits exotiques</i-button>
-                <i-button class="sleep-state" v-on:click="toggleCards(['Dried'])">Fruits secs</i-button>
-                <i-button class="sleep-state" v-on:click="toggleCards(['Nuts'])">Noix</i-button>
+                <i-button  v-on:click="toggleCards(['Fresh','Fruits'])">Fruits frais</i-button>
+                <i-button  v-on:click="toggleCards(['Exotic'])">Fruits exotiques</i-button>
+                <i-button  v-on:click="toggleCards(['Dried'])">Fruits secs</i-button>
+                <i-button  v-on:click="toggleCards(['Nuts'])">Noix</i-button>
             </div>
             </div>
         <div class="classicalTri">
@@ -14,7 +14,7 @@
                 v-model="selected"
                 :options="options"
                 label="name"
-                placeholder="... des fruits !"
+                placeholder="... à toi de choisir !"
 >                <template #prepend>
                     <span>Trier mes fruits par</span>
                 </template>
@@ -36,6 +36,8 @@
 </template>
 
 <script>
+
+
 import FruitCard from './FruitCard.vue';
 import { getFruitDataName} from '@/services/api/fruitAPI';
 
@@ -67,23 +69,30 @@ export default {
             },
 
             toggleCards:function(category){
-            for(let i=0; i<category.length;i++){ //pour chaque element present dans category
-                    //si category est deja dans cat selected alors tu l'enleves de cat selected
-                    if(this.categoriesSelected.includes(i)){
-                        this.categoriesSelected.filter((cat) => cat !== i);
-                    }else{
-                    //si category est pas dans cat selected tu mets dans cat selected
-                        this.categoriesSelected.push(i);
-                        console.log("cette fonction marche biiis");
+                               
+                // console.log("affichage category avant for: "+category);
+                // console.log("category length :"+category.length)
+                console.log("affichage category selected avant : "+ this.categoriesSelected);
 
+            for(let i=0; i<category.length;i++){ 
+
+                    if(this.categoriesSelected.includes(category[i])){
+                       this.categoriesSelected=this.categoriesSelected.filter((cat) => cat !== category[i]);
+
+                    }else{
+                       // this.categoriesSelected.push(category[i]);
+                       this.categoriesSelected[i] = category[i];
                     }
             }
+            console.log("affichage category selected a la fin: "+ this.categoriesSelected);
+
         }
         
 
         }
         
     }
+
 
 </script>
 <style>
@@ -114,7 +123,16 @@ html{
     margin:auto;
     margin-bottom: 3%;
     margin-top: 3%;
+    color:#fefaef;
 
+}
+
+.classicalTri .input-wrapper .input-prepend{
+    background-color: #242424;
+}
+
+.classicalTri .select-wrapper .input-wrapper .input-suffix > .select-caret{  
+    background-color: #242424;
 }
 
 .choiceButton .button{
@@ -128,11 +146,6 @@ html{
 
 .choiceButton .button:hover{
     background-color: #FFBD53;
-}
-
-.choiceButton .button:active{
-    background-color: red;
-    color:green;
 }
 
 .choiceButton{

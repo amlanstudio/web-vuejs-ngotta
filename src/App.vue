@@ -2,11 +2,14 @@
   <!-- <img alt="Vue logo" src="assets/logo.png"> -->
   <FruitHeader/>
   <FruitGallery/>
+  <FruitGame/>
 </template>
 
 <script>
+
 import FruitHeader from './components/FruitHeader.vue'
 import FruitGallery from './components/FruitGallery.vue'
+import FruitGame from './components/FruitGame.vue'
 
 
 
@@ -14,7 +17,8 @@ export default {
   name: 'App',
   components: {
     FruitHeader,
-    FruitGallery
+    FruitGallery,
+    FruitGame
   }
 }
 </script>

@@ -1,5 +1,5 @@
 <template>
-   <i-card class="fruit-card" v-show="categoriesSelected.length === 0 || categoriesSelected.includes(fruitCategory)">
+   <i-card class="fruit-card" v-show="categoriesSelected.includes(fruitCategory)">
     <div class="fruit-image">
         <img v-bind:src="urlFruitPicture"/>
     </div>
@@ -40,6 +40,9 @@ export default {
             this.fruitCategory=fruitCategory.name;
            // console.log(fruitDatas.photo_url);
             
+        //    if(fruit=="Wildberries" ||fruit=="Aktualisiertes Produkt" ){
+
+        //    }
           
             if(fruitDatas.photo_url != undefined){
                 this.urlFruitPicture="https://api.predic8.de"+fruitDatas.photo_url;

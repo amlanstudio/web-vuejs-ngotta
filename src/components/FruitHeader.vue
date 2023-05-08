@@ -10,6 +10,10 @@
             <h2> Qui sommes-nous ?</h2>
             <p>Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes !  </p>
     </div>
+    <div class="activites">
+        <i-button class="discover" v-on:click="scrollFruits">Manger ! 🍉</i-button>
+        <i-button class="play"  v-on:click="scrollIntro">Jouer 🧃</i-button>
+    </div>
 </template>
 
 <script>
@@ -18,14 +22,12 @@ export default {
     methods:{
         scrollIntro:function(){
             this.$refs["prez"].scrollIntoView({ behavior: "smooth" });
+        },
+        scrollFruits:function(){
+            this.$refs["fruitSalad"].scrollIntoView({ behavior: "smooth" });
         }
     }
 }
-
-// document.getElementsByClassName("enter").addEventListener('click', () => {
-//     document.getElementsByClassName("presentation").scrollIntoView({ behavior: 'smooth' });
-
-// });
 </script>
 
 <style>
