@@ -79,13 +79,35 @@ const questions=ref([
         selected:null
     },
     {
-        question : 'Être en forme, avoir le sourire, c est avoir la ...',
+        question : 'Être en forme et plein d energie, c est avoir la ...',
         answer : 3,
         options : [
             'poire',
             'framboise',
             'mangue',
-            'banane'
+            'pêche'
+        ],
+        selected:null
+    },
+    {
+        question : 'Avoir le sourire, c est avoir la ...',
+        answer : 2,
+        options : [
+            'poire',
+            'framboise',
+            'banane',
+            'fraise'
+        ],
+        selected:null
+    },
+    {
+        question : 'S évanouir c est tomber dans les ...',
+        answer : 3,
+        options : [
+            'oranges',
+            'pommes',
+            'mûres',
+            'poires'
         ],
         selected:null
     },
@@ -125,7 +147,21 @@ const NextQuestion=()=>{
 
 export default {
     name : 'FruitGame',
-}
+    data(){
+        return{
+        score,
+        questions,
+        quizzCompleted,
+        currentQuestion,
+        getCurrentQuestion,
+        }
+    },
+    methods:{
+        NextQuestion,
+        setAnswer,        
+    }
+    }
+
 </script>
 
 <style>
@@ -136,6 +172,7 @@ export default {
     align-items: center;
     padding: 2rem;
     min-height: 100vh;
+    margin-top: 1000px;
 }
 
 h2{

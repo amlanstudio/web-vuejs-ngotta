@@ -70,13 +70,19 @@ export default {
     width:300px;
 }
 
+.fruit-card:hover{
+    zoom:120%;
+}
 
 .gallery .card > .card-body{
     background: #fefaef;
     color:#242424;
-    border:solid;
-    border-color: #242424;
+    border:none;
+    /* border-color: #242424; */
     border-radius: 20px;
+    background-color: white;
+    box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.2);
+    
 }
 .fruit-image{
     max-width: auto;

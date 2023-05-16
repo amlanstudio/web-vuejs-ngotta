@@ -1,12 +1,15 @@
 <template>
     <div class="fruits-gallery">
         <div class="typeFruitsTri" ref="fruitSalad">
-            <h3>Dans ma salade de fruit il y a ...</h3>
+            <h3>Dans ma salade de fruits il y a ...</h3>
             <div class="choiceButton">
-                <i-button  v-on:click="toggleCards(['Fresh','Fruits'])">Fruits frais</i-button>
-                <i-button  v-on:click="toggleCards(['Exotic'])">Fruits exotiques</i-button>
-                <i-button  v-on:click="toggleCards(['Dried'])">Fruits secs</i-button>
-                <i-button  v-on:click="toggleCards(['Nuts'])">Noix</i-button>
+                <i-button :class="{'isSelected':categoriesSelected.includes('Fresh','Fruits')}" @click="toggleCards(['Fresh','Fruits'])" >Fruits frais</i-button>
+
+                <i-button :class="{'isSelected':categoriesSelected.includes('Exotic')}" @click="toggleCards(['Exotic'])">Fruits exotiques</i-button>
+                
+                <i-button :class="{'isSelected':categoriesSelected.includes('Dried')}"  @click="toggleCards(['Dried'])" >Fruits secs</i-button>
+
+                <i-button  :class="{'isSelected':categoriesSelected.includes('Nuts')}" @click="toggleCards(['Nuts'])" >Noix</i-button>
             </div>
             </div>
         <div class="classicalTri">
@@ -49,7 +52,13 @@ export default {
     data(){
         return{
             fruitsName:[],
-            categoriesSelected:[],
+            categoriesSelected:['Fresh','Fruits','Exotic','Dried','Nuts'],
+            selected:null,
+            options:[
+                {id:1, label:"coucou"},
+                {id:2, label:"hello"},
+                {id:3, label:"hola"},
+            ]
         }
     },
     created(){
@@ -68,24 +77,16 @@ export default {
 
             },
 
-            toggleCards:function(category){
-                               
-                // console.log("affichage category avant for: "+category);
-                // console.log("category length :"+category.length)
-                console.log("affichage category selected avant : "+ this.categoriesSelected);
-
+            toggleCards(category){
+            this.active=!this.active; 
             for(let i=0; i<category.length;i++){ 
-
-                    if(this.categoriesSelected.includes(category[i])){
-                       this.categoriesSelected=this.categoriesSelected.filter((cat) => cat !== category[i]);
-
-                    }else{
-                       // this.categoriesSelected.push(category[i]);
-                       this.categoriesSelected[i] = category[i];
-                    }
+                if(this.categoriesSelected.includes(category[i])){
+                    this.categoriesSelected=this.categoriesSelected.filter((cat) => cat !== category[i]); 
+                }else{
+                       this.categoriesSelected.push(category[i]);
+                    //    this.categoriesSelected[i] = category[i];
+                }
             }
-            console.log("affichage category selected a la fin: "+ this.categoriesSelected);
-
         }
         
 
@@ -135,6 +136,10 @@ html{
     background-color: #242424;
 }
 
+.select .select-options{
+    background-color: red !important;
+}
+
 .choiceButton .button{
     margin: 20px;
     width:150px;
@@ -142,17 +147,20 @@ html{
     border-radius: 10px;
     background-color: #242424;
     color:#fefaef;
+   
 }
 
-.choiceButton .button:hover{
-    background-color: #FFBD53;
-}
 
 .choiceButton{
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+}
+
+.isSelected{
+    background-color: #FFBD53 !important;
+    color:#242424 !important;
 }
 
 </style>

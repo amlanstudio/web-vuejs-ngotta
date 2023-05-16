@@ -11,8 +11,8 @@
             <p>Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes !  </p>
     </div>
     <div class="activites">
-        <i-button class="discover" v-on:click="scrollFruits">Manger ! 🍉</i-button>
-        <i-button class="play"  v-on:click="scrollIntro">Jouer 🧃</i-button>
+        <i-button class="discover" v-on:click="scrollFruits">La famille ! 🍉</i-button>
+        <i-button class="play"  v-on:click="scrollIntro">Jouer ! 🧃</i-button>
     </div>
 </template>
 
@@ -76,6 +76,31 @@ export default {
 }
 .presentation h2{
     text-align: center;
+}
+
+.activites{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+.activites .button{
+    margin:80px;
+    margin-bottom: 100px;
+    margin-top: 50px;
+    width:200px; 
+    border:none;
+    border-radius: 10px;
+    font-size: 24px;
+    color:#242424;
+    background-color: #E9E98E	;
+
+}
+
+.activites .button:hover{
+    color:white !important;
+    background-color:#F08080;
 }
 
 
