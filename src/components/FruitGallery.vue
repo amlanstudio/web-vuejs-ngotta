@@ -1,36 +1,26 @@
 <template>
     <div class="fruits-gallery">
-        <div class="typeFruitsTri" ref="fruitSalad">
-            <h3>Dans ma salade de fruits il y a ...</h3>
-            <div class="choiceButton">
-                <i-button :class="{'isSelected':categoriesSelected.includes('Fresh','Fruits')}" @click="toggleCards(['Fresh','Fruits'])" >Fruits frais</i-button>
-
-                <i-button :class="{'isSelected':categoriesSelected.includes('Exotic')}" @click="toggleCards(['Exotic'])">Fruits exotiques</i-button>
-                
-                <i-button :class="{'isSelected':categoriesSelected.includes('Dried')}"  @click="toggleCards(['Dried'])" >Fruits secs</i-button>
-
-                <i-button  :class="{'isSelected':categoriesSelected.includes('Nuts')}" @click="toggleCards(['Nuts'])" >Noix</i-button>
-            </div>
-            </div>
         <div class="classicalTri">
             <i-select
                 v-model="selected"
                 :options="options"
-                label="name"
+                :label="renderLabel"
                 placeholder="... à toi de choisir !"
 >                <template #prepend>
                     <span>Trier mes fruits par</span>
                 </template>
         </i-select>
         </div>
+
             <div class="gallery">
                 <div class="cards">
                     <FruitCard
-                        v-for="fruit in fruitsName"
-                        v-bind:key="fruit.name"
+                        v-for="fruit in sortMyFruits"
+                        v-bind:key="fruit.product_url"
                         v-bind:product_url="fruit.product_url"
                         v-bind:fruit="fruit.name"
                         v-bind:categoriesSelected="categoriesSelected"
+                        v-bind:catt="fruit.fruitCategory"
                     />
                 </div>
         </div>        
@@ -42,27 +32,63 @@
 
 
 import FruitCard from './FruitCard.vue';
-import { getFruitDataName} from '@/services/api/fruitAPI';
+import { getFruitDataName,getFruitCategory, getFruitAllDatas} from '@/services/api/fruitAPI';
 
 export default {
     name : 'FruitsGallery',
     components :{
         FruitCard
     },
+    props:{
+        categoriesSelected:{type:Array},
+    },
     data(){
         return{
             fruitsName:[],
-            categoriesSelected:['Fresh','Fruits','Exotic','Dried','Nuts'],
-            selected:null,
+            selected:1,
             options:[
-                {id:1, label:"coucou"},
-                {id:2, label:"hello"},
-                {id:3, label:"hola"},
+                {id:1, label:"Tri par défaut"},
+                {id:2, label:"Trier par ordre alphabétique des catégories"},
+                {id:3, label:"Trier par ordre alphabétique inverse des catégories"},
+                {id:4, label:"Trier les fruits par ordre alphabétique"},
+                {id:5, label:"Trier les fruits par ordre alphabétique inverse"},
+
             ]
+        }
+    },
+    computed:{
+        sortMyFruits:function(){
+            // Je copie mes fruits
+            let tempFruits=[...this.fruitsName];
+            // Trier en fonction de la volonté
+            tempFruits=tempFruits.sort((a,b) => {
+                
+                //Tri par ordre alphabetique des cat
+                // if(!this.selected || this.selected.id===2){
+                //     return a.catt.localeCompare(b.catt,'en')
+                // }
+
+                //Tri par ordre alphabetique inverse des categories
+
+                 //Tri par ordre alphabetique des fruits
+                if(!this.selected || this.selected.id===4){
+                    return a.name.localeCompare(b.name,'en')
+                }
+
+                //Tri par ordre alphabetique inverse des fruits
+                if(!this.selected || this.selected.id===5){
+                    return b.name.localeCompare(a.name,'en')
+                }
+
+
+            })
+            console.log(tempFruits)
+            return tempFruits
         }
     },
     created(){
         this.recupFruitName();
+        this.recupFruitCategory();
     },
     methods:{
         async recupFruitName(){
@@ -72,24 +98,14 @@ export default {
                 var cards = document.getElementsByClassName("card");
                 for(var i = 0; i < cards.length; i++) {
                     cards[i].style.backgroundColor = 'red';
-            }
-}
-
-            },
-
-            toggleCards(category){
-            this.active=!this.active; 
-            for(let i=0; i<category.length;i++){ 
-                if(this.categoriesSelected.includes(category[i])){
-                    this.categoriesSelected=this.categoriesSelected.filter((cat) => cat !== category[i]); 
-                }else{
-                       this.categoriesSelected.push(category[i]);
-                    //    this.categoriesSelected[i] = category[i];
                 }
             }
-        }
-        
-
+        },
+        async recupFruitCategory(){
+            let fruitDatas=await getFruitAllDatas(this.product_url);
+            let fruitCategory=await getFruitCategory("https://api.predic8.de"+fruitDatas.category_url);
+            this.fruitCategory=fruitCategory.name;
+        },
         }
         
     }
@@ -137,30 +153,8 @@ html{
 }
 
 .select .select-options{
-    background-color: red !important;
+    background-color: #FFBD53;
 }
 
-.choiceButton .button{
-    margin: 20px;
-    width:150px;
-    border:none;
-    border-radius: 10px;
-    background-color: #242424;
-    color:#fefaef;
-   
-}
-
-
-.choiceButton{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-}
-
-.isSelected{
-    background-color: #FFBD53 !important;
-    color:#242424 !important;
-}
 
 </style>

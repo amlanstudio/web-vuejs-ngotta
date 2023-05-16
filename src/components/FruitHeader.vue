@@ -12,7 +12,7 @@
     </div>
     <div class="activites">
         <i-button class="discover" v-on:click="scrollFruits">La famille ! 🍉</i-button>
-        <i-button class="play"  v-on:click="scrollIntro">Jouer ! 🧃</i-button>
+        <i-button class="play"  v-on:click="scrollGame">Jouer ! 🧃</i-button>
     </div>
 </template>
 
@@ -24,7 +24,10 @@ export default {
             this.$refs["prez"].scrollIntoView({ behavior: "smooth" });
         },
         scrollFruits:function(){
-            this.$refs["fruitSalad"].scrollIntoView({ behavior: "smooth" });
+            document.getElementsByClassName("typeFruitsTri")[0].scrollIntoView({ behavior: "smooth" });
+        },
+        scrollGame:function(){
+            document.getElementsByClassName("typeFruitsTri")[0].scrollIntoView({ behavior: "smooth" });
         }
     }
 }
