@@ -7,7 +7,7 @@
         </i-header>
     </div>
     <div class="presentation" ref="prez">
-            <h2> Qui sommes-nous ?</h2>
+            <h2 class="titlePrez"> Qui sommes-nous ?</h2>
             <p>Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes !  </p>
     </div>
     <div class="activites">
@@ -27,7 +27,7 @@ export default {
             document.getElementsByClassName("typeFruitsTri")[0].scrollIntoView({ behavior: "smooth" });
         },
         scrollGame:function(){
-            document.getElementsByClassName("typeFruitsTri")[0].scrollIntoView({ behavior: "smooth" });
+            document.getElementsByClassName("myGame")[0].scrollIntoView({ behavior: "smooth" });
         }
     }
 }
@@ -79,6 +79,7 @@ export default {
 }
 .presentation h2{
     text-align: center;
+    color:#242424;
 }
 
 .activites{

@@ -1,25 +1,44 @@
 <template>
   <!-- <img alt="Vue logo" src="assets/logo.png"> -->
   <FruitHeader/>
-  <GalleryButtons
+  <main>
+    <div class="fruitsGallery">
+        <ButtonSort
     v-model:categories-selected="categoriesSelected"/> 
-  <FruitGallery v-bind:categoriesSelected="categoriesSelected"/>
-  <FruitGame/>
+        <FruitGallery v-bind:categoriesSelected="categoriesSelected"/>
+      </div>
+      <div class="game">
+        <FruitGame/>
+      </div>
+  </main>
 </template>
+
+
 
 <script>
 
 import FruitHeader from './components/FruitHeader.vue'
-import GalleryButtons from './components/GalleryButtons.vue'
+import ButtonSort from './components/ButtonSort.vue'
 import FruitGallery from './components/FruitGallery.vue'
 import FruitGame from './components/FruitGame.vue'
 
 
 export default {
+  mounted() {
+    window.addEventListener('beforeunload', this.scrollByDefault);
+  },
+  beforeUnmount() {
+    window.removeEventListener('beforeunload', this.scrollByDefault);
+  },
+  methods: {
+    scrollByDefault() {
+      window.scrollTo(0, 0);
+    }
+  },
   name: 'App',
   components: {
     FruitHeader,
-    GalleryButtons,
+    ButtonSort,
     FruitGallery,
     FruitGame
   },
@@ -28,14 +47,13 @@ export default {
       categoriesSelected:['Fresh','Fruits','Exotic','Dried','Nuts'],
     }
   },
-  methods:{
-    scrollToTheTop:function(){
-                document.getElementsByClassName("banniere")[0].scrollIntoView({ behavior: "smooth" });
-    },
-
-    // window.addEventLister("load",(event)=>{scrollToTheTop();})
-}
-}
+//   methods:{
+//     scrollToTop() {
+//       // document.getElementsByClassName("banniere")[0].scrollIntoView({ behavior: "smooth" });
+//     window.scrollTo(0, 0);
+// }
+//       }
+  }
 
 </script>
 
@@ -47,5 +65,16 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #242424; 
+  justify-content: space-between;
 }
+
+main{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: auto;
+}
+
+
+
 </style>

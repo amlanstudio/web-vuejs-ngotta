@@ -38,11 +38,6 @@ export default {
             let fruitDatas=await getFruitAllDatas(this.product_url);
             let fruitCategory=await getFruitCategory("https://api.predic8.de"+fruitDatas.category_url);
             this.fruitCategory=fruitCategory.name;
-           // console.log(fruitDatas.photo_url);
-            
-        //    if(fruit=="Wildberries" ||fruit=="Aktualisiertes Produkt" ){
-
-        //    }
           
             if(fruitDatas.photo_url != undefined){
                 this.urlFruitPicture="https://api.predic8.de"+fruitDatas.photo_url;

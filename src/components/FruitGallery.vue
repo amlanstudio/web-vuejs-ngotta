@@ -11,7 +11,6 @@
                 </template>
         </i-select>
         </div>
-
             <div class="gallery">
                 <div class="cards">
                     <FruitCard
@@ -22,8 +21,9 @@
                         v-bind:categoriesSelected="categoriesSelected"
                         v-bind:catt="fruit.fruitCategory"
                     />
+                    <ScrollToTopButton />
                 </div>
-        </div>        
+        </div> 
     </div>
 
 </template>
@@ -32,15 +32,18 @@
 
 
 import FruitCard from './FruitCard.vue';
+import ScrollToTopButton from './ScrollToTopButton.vue';
 import { getFruitDataName,getFruitCategory, getFruitAllDatas} from '@/services/api/fruitAPI';
 
 export default {
     name : 'FruitsGallery',
     components :{
-        FruitCard
+        FruitCard,
+        ScrollToTopButton,
     },
     props:{
         categoriesSelected:{type:Array},
+        catt:{type:String},
     },
     data(){
         return{
@@ -48,10 +51,8 @@ export default {
             selected:1,
             options:[
                 {id:1, label:"Tri par défaut"},
-                {id:2, label:"Trier par ordre alphabétique des catégories"},
-                {id:3, label:"Trier par ordre alphabétique inverse des catégories"},
-                {id:4, label:"Trier les fruits par ordre alphabétique"},
-                {id:5, label:"Trier les fruits par ordre alphabétique inverse"},
+                {id:2, label:"Trier les fruits par ordre alphabétique"},
+                {id:3, label:"Trier les fruits par ordre alphabétique inverse"},
 
             ]
         }
@@ -62,14 +63,7 @@ export default {
             let tempFruits=[...this.fruitsName];
             // Trier en fonction de la volonté
             tempFruits=tempFruits.sort((a,b) => {
-                
-                //Tri par ordre alphabetique des cat
-                // if(!this.selected || this.selected.id===2){
-                //     return a.catt.localeCompare(b.catt,'en')
-                // }
-
-                //Tri par ordre alphabetique inverse des categories
-
+            
                  //Tri par ordre alphabetique des fruits
                 if(!this.selected || this.selected.id===4){
                     return a.name.localeCompare(b.name,'en')
@@ -79,8 +73,6 @@ export default {
                 if(!this.selected || this.selected.id===5){
                     return b.name.localeCompare(a.name,'en')
                 }
-
-
             })
             console.log(tempFruits)
             return tempFruits
@@ -118,11 +110,9 @@ html{
 }
 
 .gallery{
-    margin:auto;
+    margin:0px 80px 0px 80px ;
     align-items: center;
-    margin-bottom: 1.5%;
     display: flex;
-    
 }
 
 .gallery .cards{
@@ -131,8 +121,9 @@ html{
     justify-content: space-evenly;
     align-content: center;
     flex-wrap: wrap;
-    gap:450px 0px;
+    gap:400px 0px;
     flex-grow: 3;
+    margin-bottom: 400px;
 }
 
 .classicalTri{

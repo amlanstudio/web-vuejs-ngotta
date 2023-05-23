@@ -16,7 +16,7 @@
 <script>
 
 export default {
-    name : 'GalleryButtons',
+    name : 'ButtonSort',
     data(){
         return{
             fruitsName:[],
