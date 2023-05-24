@@ -169,9 +169,10 @@ export default {
         NextQuestion,
         SetAnswer,
         ResetQuizz,
+    },
+}
 
-    }
-    }
+
 
 </script>
 
@@ -183,7 +184,7 @@ export default {
     align-items: center;
     background-color: #242424;
     height: 700px;
-    /* justify-content: space-evenly; */
+    justify-content: space-evenly;
 }
 
 .gameTitle{

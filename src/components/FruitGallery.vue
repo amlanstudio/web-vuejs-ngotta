@@ -50,9 +50,9 @@ export default {
             fruitsName:[],
             selected:1,
             options:[
-                {id:1, label:"Tri par défaut"},
-                {id:2, label:"Trier les fruits par ordre alphabétique"},
-                {id:3, label:"Trier les fruits par ordre alphabétique inverse"},
+                {id:0, label:"Tri par défaut"},
+                {id:1, label:"Trier les fruits par ordre alphabétique"},
+                {id:2, label:"Trier les fruits par ordre alphabétique inverse"},
 
             ]
         }
@@ -65,12 +65,12 @@ export default {
             tempFruits=tempFruits.sort((a,b) => {
             
                  //Tri par ordre alphabetique des fruits
-                if(!this.selected || this.selected.id===4){
+                if(!this.selected || this.selected.id===1){
                     return a.name.localeCompare(b.name,'en')
                 }
 
                 //Tri par ordre alphabetique inverse des fruits
-                if(!this.selected || this.selected.id===5){
+                if(!this.selected || this.selected.id===2){
                     return b.name.localeCompare(a.name,'en')
                 }
             })
@@ -86,12 +86,6 @@ export default {
         async recupFruitName(){
             this.fruitsName=await getFruitDataName();
             this.fruitsName = this.fruitsName.products;   
-            if(this.fruitsName.includes("Kochkurs für Studenten")){
-                var cards = document.getElementsByClassName("card");
-                for(var i = 0; i < cards.length; i++) {
-                    cards[i].style.backgroundColor = 'red';
-                }
-            }
         },
         async recupFruitCategory(){
             let fruitDatas=await getFruitAllDatas(this.product_url);

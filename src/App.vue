@@ -47,12 +47,6 @@ export default {
       categoriesSelected:['Fresh','Fruits','Exotic','Dried','Nuts'],
     }
   },
-//   methods:{
-//     scrollToTop() {
-//       // document.getElementsByClassName("banniere")[0].scrollIntoView({ behavior: "smooth" });
-//     window.scrollTo(0, 0);
-// }
-//       }
   }
 
 </script>
@@ -66,6 +60,7 @@ export default {
   text-align: center;
   color: #242424; 
   justify-content: space-between;
+  cursor:url('assets/image/ananas.png'),pointer;
 }
 
 main{
