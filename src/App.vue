@@ -11,6 +11,7 @@
         <FruitGame/>
       </div>
   </main>
+  <FruitFooter/>
 </template>
 
 
@@ -21,6 +22,7 @@ import FruitHeader from './components/FruitHeader.vue'
 import ButtonSort from './components/ButtonSort.vue'
 import FruitGallery from './components/FruitGallery.vue'
 import FruitGame from './components/FruitGame.vue'
+import FruitFooter from './components/FruitFooter.vue'
 
 
 export default {
@@ -40,7 +42,8 @@ export default {
     FruitHeader,
     ButtonSort,
     FruitGallery,
-    FruitGame
+    FruitGame,
+    FruitFooter
   },
   data(){
     return{

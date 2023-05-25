@@ -1,5 +1,5 @@
 <template>
-    <div class="fruits-gallery">
+    <div class="fruitsGallery">
         <div class="classicalTri">
             <i-select
                 v-model="selected"
@@ -79,15 +79,15 @@ export default {
         }
     },
     created(){
-        this.recupFruitName();
-        this.recupFruitCategory();
+        this.getFruitName();
+        this.getFruitCategory();
     },
     methods:{
-        async recupFruitName(){
+        async getFruitName(){
             this.fruitsName=await getFruitDataName();
             this.fruitsName = this.fruitsName.products;   
         },
-        async recupFruitCategory(){
+        async getFruitCategory(){
             let fruitDatas=await getFruitAllDatas(this.product_url);
             let fruitCategory=await getFruitCategory("https://api.predic8.de"+fruitDatas.category_url);
             this.fruitCategory=fruitCategory.name;

@@ -1,6 +1,6 @@
 <template>
-   <i-card class="fruit-card" v-show="categoriesSelected.includes(fruitCategory)">
-    <div class="fruit-image">
+   <i-card class="fruitCard" v-show="categoriesSelected.includes(fruitCategory)">
+    <div class="fruitImage">
         <img v-bind:src="urlFruitPicture"/>
     </div>
     <h2 class="name">{{ fruit }}</h2>
@@ -60,12 +60,12 @@ export default {
 
 
 <style>
-.fruit-card{
+.fruitCard{
     height:25px;
     width:300px;
 }
 
-.fruit-card:hover{
+.fruitCard:hover{
     zoom:120%;
 }
 
@@ -79,11 +79,11 @@ export default {
     box-shadow: 1px 2px 5px 2px rgba(0, 0, 0, 0.2);
     
 }
-.fruit-image{
+.fruitImage{
     max-width: auto;
     border-radius: 20px;
 }
-.fruit-image img{
+.fruitImage img{
     max-width:100%;
     border-radius: 20px;
 }

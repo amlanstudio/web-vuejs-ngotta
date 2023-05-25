@@ -1,18 +1,18 @@
 <template>
-    <div class="banniere">
+    <div class="banner">
         <i-header id="cover-header" cover class="_text-align:center _color:white">
             <h1>BIENVENUE CHEZ LES FRUITZS</h1>
             <p>L'application qui a la 🍑 et qui va te donner la 🍌 ! </p>
-            <i-button class="enter" color="primary" v-on:click="scrollIntro">RAMÈNE TA FRAISE ! 🍓</i-button>
+            <i-button class="enter" color="primary" v-on:click="scrollToIntro">RAMÈNE TA FRAISE ! 🍓</i-button>
         </i-header>
     </div>
-    <div class="presentation" ref="prez">
-            <h2 class="titlePrez"> Qui sommes-nous ?</h2>
+    <div class="presentation" ref="presentation">
+            <h2 class="presentationTitle"> Qui sommes-nous ?</h2>
             <p>Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes ! Bla bla bla, nous somme une grande famille, la famille des fruits, les fructus ! Sur cette app, tu vas découvrir toutes les variétés de fruits différentes !  </p>
     </div>
     <div class="activites">
-        <i-button class="discover" v-on:click="scrollFruits">La famille ! 🍉</i-button>
-        <i-button class="play"  v-on:click="scrollGame">Jouer ! 🧃</i-button>
+        <i-button class="discover" v-on:click="scrollToFruits">La famille ! 🍉</i-button>
+        <i-button class="play"  v-on:click="scrollToGame">Jouer ! 🧃</i-button>
     </div>
 </template>
 
@@ -20,13 +20,13 @@
 export default {
     name : 'FruitHeader',
     methods:{
-        scrollIntro:function(){
-            this.$refs["prez"].scrollIntoView({ behavior: "smooth" });
+        scrollToIntro:function(){
+            this.$refs["presentation"].scrollIntoView({ behavior: "smooth" });
         },
-        scrollFruits:function(){
-            document.getElementsByClassName("typeFruitsTri")[0].scrollIntoView({ behavior: "smooth" });
+        scrollToFruits:function(){
+            document.getElementsByClassName("typeFruitsSort")[0].scrollIntoView({ behavior: "smooth" });
         },
-        scrollGame:function(){
+        scrollToGame:function(){
             document.getElementsByClassName("myGame")[0].scrollIntoView({ behavior: "smooth" });
         }
     }

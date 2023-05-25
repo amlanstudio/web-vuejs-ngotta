@@ -1,5 +1,5 @@
 <template>
-<div class="typeFruitsTri">
+<div class="typeFruitsSort">
     <h3>Dans ma salade de fruits il y a ...</h3>
     <div class="choiceButton">
         <i-button :class="{'isSelected':categoriesSelected.includes('Fresh','Fruits')}" @click="toggleCards(['Fresh','Fruits'])" >Fruits frais</i-button>
@@ -66,5 +66,6 @@ export default {
     background-color: #FFBD53 !important;
     color:#242424 !important;
 }
+
 
 </style>
